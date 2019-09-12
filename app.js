@@ -24,6 +24,24 @@ app.set('view engine', 'ejs');
 //Bodyparser
 app.use(express.urlencoded ({ extended: false}))
 
+//Express Session
+app.use(session({
+    secret: 'stickman',
+    resave: true,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+}));
+
+//Connect flash
+app.use(flash())
+
+//global variables to change color for alerts
+app.use((req, res, next)=> {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+})
+
 // Routes
 app.use('/', require('./routes/index'))
 
