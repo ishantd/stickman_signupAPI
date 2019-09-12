@@ -3,9 +3,15 @@ const router = express.Router();
 
 
 // for the signin page
-router.get('/signin', (req, res) => res.send('Sign in here!'))
+router.get('/login', (req, res) => res.render('login'))
 
 //for the signup page
-router.get('/signup', (req, res) => res.send('Sign up here!'))
+router.get('/register', (req, res) => res.render('register'))
+
+// Register Handle
+router.post('/register', (req, res)=>{
+    console.log(req.body)
+    res.send('Hello')
+})
 
 module.exports = router;

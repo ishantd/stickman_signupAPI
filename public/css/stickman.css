@@ -1,0 +1,177 @@
+.space {
+  height: 10px;
+  width: 20px;
+}
+
+.space1 {
+  height: 300px;
+  width: 20px;
+}
+
+.stickman {
+  height: 20em;
+  width: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10em;
+  margin-left: -5em;
+  border-bottom: .1em solid;
+  animation: 0.5s walk-body ease-in infinite;
+}
+.stickman .head {
+  height: 5em;
+  width: 5em;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  background-color: #111;
+  border-radius: 100%;
+}
+.stickman .head .eye {
+  height: 0.625em;
+  width: 0.625em;
+  position: absolute;
+  top: 32.5%;
+  right: 25%;
+  background: #fff;
+  border-radius: 100%;
+}
+.stickman .head .mouth {
+  height: 0.3125em;
+  width: 1.4285714286em;
+  position: absolute;
+  bottom: 25%;
+  right: 0;
+  transform: rotate(11.25deg);
+  background-color: #fff;
+}
+.stickman .body {
+  height: 6.6666666667em;
+  width: 0.625em;
+  position: absolute;
+  top: 5em;
+  left: 50%;
+  margin-left: -0.3125em;
+  background-color: #111;
+}
+.stickman .body .arm {
+  height: 5em;
+  width: 0.625em;
+  position: absolute;
+  top: 0;
+  transform: rotate(-45deg);
+  transform-origin: top;
+  background: #111;
+  animation: 1s walk-arm infinite;
+}
+.stickman .body .arm#left {
+  animation-delay: 0.5s;
+  background: #222;
+}
+.stickman .body .arm#left::after {
+  animation-delay: 0.5s;
+  background: #222;
+}
+.stickman .body .arm::after {
+  content: "";
+  height: 3.3333333333em;
+  width: 0.625em;
+  position: absolute;
+  bottom: 0;
+  transform: rotate(90deg);
+  transform-origin: right bottom;
+  background: #111;
+  animation: 1s walk-arm-after infinite;
+}
+.stickman .body .leg {
+  height: 4.1666666667em;
+  width: 0.625em;
+  position: absolute;
+  bottom: -4.1666666667em;
+  transform: rotate(-90deg);
+  transform-origin: top;
+  background: #222;
+  animation: 1s walk-leg infinite;
+}
+.stickman .body .leg#right {
+  background: #111;
+  animation-delay: 0.5s;
+}
+.stickman .body .leg#right::after {
+  background: #111;
+  animation-delay: 0.5s;
+}
+.stickman .body .leg::after {
+  content: "";
+  height: 4.1666666667em;
+  width: 0.625em;
+  position: absolute;
+  bottom: -4.1666666667em;
+  transform: rotate(112.5deg);
+  transform-origin: top;
+  background: #222;
+  animation: 1s walk-leg-after infinite;
+}
+
+@keyframes walk-body {
+  0% {
+    margin-top: -11.25em;
+    padding-bottom: 1.25em;
+  }
+  50% {
+    margin-top: -10em;
+    padding-bottom: 0;
+  }
+  100% {
+    margin-top: -11.25em;
+    padding-bottom: 1.25em;
+  }
+}
+@keyframes walk-arm {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+@keyframes walk-arm-after {
+  0% {
+    transform: rotate(67.5deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(67.5deg);
+  }
+}
+@keyframes walk-leg {
+  0% {
+    transform: rotate(-90deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes walk-leg-after {
+  0% {
+    transform: rotate(112.5deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(55deg);
+  }
+  100% {
+    transform: rotate(112.5deg);
+  }
+}
