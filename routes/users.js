@@ -2,6 +2,19 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const multer = require ('multer');
+const uuidv4 = require("uuid/v4");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function(req, file, cb) {
+        cb(null, uuidv4() + file.originalname.split(" ").join(""));
+    }
+})
+
+const upload = multer({ storage: storage })
 
 // User model for Mongo DB
 const User = require('../models/User')
@@ -13,7 +26,8 @@ router.get('/login', (req, res) => res.render('login'))
 router.get('/register', (req, res) => res.render('register'))
 
 // Register Handle
-router.post('/register', (req, res)=>{
+router.post('/register', upload.single('personImage'), (req, res)=>{
+    // console.log(req.file)
     const { name, email, password, password2 } = req.body;
     let errors = [];
 
@@ -57,9 +71,10 @@ router.post('/register', (req, res)=>{
                 }) 
             } else {
                 const newUser = new User({
-                    name,
-                    email,
-                    password                    
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password,
+                    image: req.file.path                    
                 })
                 //Encrypting the password
                 bcrypt.genSalt(10, (err, salt) => 

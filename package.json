@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ishantd/stickman_signupAPI#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
@@ -32,7 +33,9 @@
     "multer": "^1.4.2",
     "multer-gridfs-storage": "^3.3.0",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "uuid": "^3.3.3",
+    "uuidv4": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
